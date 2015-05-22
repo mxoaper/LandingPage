@@ -1,5 +1,5 @@
 body {
-  background: #000;
+  background-image: url("background.jpg"); 
   padding: 0px;
   margin: 0px;
 }
@@ -186,6 +186,31 @@ nav .nodes {
   font-size: 160px;
 }
 
-div.item.one {
-  background-color: red;
+.name{
+  text-align: center;
+  color: white;
+  margin-top: 150px;
+  font-family: 'Sorts Mill Goudy', serif;
+  font-size: 150px;
 }
+
+.sub{
+  text-align: center;
+  font-family: 'Sorts Mill Goudy', serif;
+  font-size: 110px;
+  color: white;
+}
+
+.line{
+  width: 79%;
+  position: relative;
+}
+
+.skills{
+  text-align: center;
+  font-size: 100px;
+  margin-top: 190px;
+  color: white;
+  font-family: 'Sorts Mill Goudy', serif;
+}
+

@@ -214,3 +214,22 @@ nav .nodes {
   font-family: 'Sorts Mill Goudy', serif;
 }
 
+.skillborder{
+  border-radius: 15px;
+  width: 90%;
+  height: 50px;
+  padding: 10px;
+  border: 5px solid gray;
+  padding: 225px;
+  margin: 0;
+}
+
+p{
+  color: white;
+  font-size: 16px;
+  margin: -205px 0px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;

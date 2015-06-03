@@ -1,0 +1,59 @@
+.container {
+    width:100%;
+}
+.container div {
+    width:100%;
+}
+.container .header {
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.container .content {
+    display: none;
+    padding : 5px;
+}
+
+.pie{
+	position:relative;
+	width:138px;
+	height:138px;
+	display:inline-block
+}
+.caption {
+	font-family:'Gotham SSm A', 'Gotham SSm B', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, sans-serif;;
+	position:absolute;
+	top:0;
+	width:138px;
+	height:100%;
+	line-height:138px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	white-space:nowrap;font-size:2em;
+	color:#4a4a4a
+
+}
+
+.pie{
+	display: -webkit-box;
+  	list-style: none;
+  	padding-left: 50px;
+}
+
+div.caption{
+	text-indent: 50px;
+}
+
+
+li{
+  padding-right: 10px;
+}
+
+.languages{
+	display: -webkit-box;
+    list-style: none;
+}
+
+div.header{
+	text-align: center;
+}

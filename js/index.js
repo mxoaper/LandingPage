@@ -1,71 +1,50 @@
-$( '.item' ).height( window.innerHeight );
-var $document = $( document.body );
-var $revealBar = $( '.red-container' );
-var wrapperHeight = $document.height();
-var stepDistance = 101;
-var documentHeight = window.innerHeight;
-var positions = [];
-var heights = [];
-var elements = $( '.item:not(".main")' );
+//Only works in Chrome. Best viewed full screen: http://codepen.io/trhino/full/qcvBd
 
-// Cache heights and positions
-for( var i = 0; i < elements.length; i++ ) {
-  var $element = $(elements[i]);
-  var height = $element.offset().top + documentHeight;
-  if (height > wrapperHeight) {
-    height = wrapperHeight;
-  }
-  positions.push(height);
-  heights.push($element.height());
-}
+leftPos = $(window).width() + 200;
 
-var $nodes =  $( '.node' );
+function setLeft(){
+  leftPos = $(window).width() + 200;
+  $('nav li').css('left', -leftPos); 
+};
+setLeft();
 
-// Should totally be debounced /w animation frame. I know,
-// this whole thing is slightly inefficient.
-// And magic numbers too!
-$( document ).scroll( function() {
-
-  nodeTop = $document.scrollTop() + documentHeight + 1;
-  var current = 0;
+//Nav in
+$('.fa-reorder').on('click', function(){
+  var timer = 0
   
-  // Active/non active states
-  for( var i = 0; i < positions.length; i++ ) {
-    if(nodeTop > positions[i]) {
-      current = i;
-      $nodes.eq( i ).addClass( 'active' );
-    } else {
-      $nodes.eq( i ).removeClass( 'active' );
-    }
-  }
-  
-  // Bar positioning, so sections can have different heights.
-  var distanceToNext = 0;
-  
-  // Initial node, already has some of the bar filled.
-  if( nodeTop < positions[0] ) {	
-    var nextStep = (nodeTop - positions[current]) / (positions[current + 1] - positions[current]);
+  $('nav li').each(function(){
+    timer = timer + 75;
+    var $this = $(this);
+    setTimeout(function(){
+      $this.animate({ left : 0 }, 200);
+    }, timer);    
+    });
     
-    // Calculating for node widths.
-    var totalWidth = ((stepDistance) + ( current * stepDistance ) + (nextStep * stepDistance)) * 0.4;
-    $revealBar.width( (0.6 * stepDistance) + totalWidth );
-
-  // Final node covered.
-  } else if (nodeTop > positions[6]) {
-    $revealBar.width(stepDistance * (current + 1));
-  
-  // regular nodes
-  } else if ( current < elements.length ) {
-    var nextStep = (nodeTop - positions[current]) / (positions[current + 1] - positions[current]);
-    var totalWidth = stepDistance + ( current * stepDistance ) + (nextStep * stepDistance);
-	 $revealBar.width( totalWidth );
-  }
-})
-
-// Clicking the nodes... again, nothing special ;)
-$nodes.each( function( index ) {
-  var $node = $( this );
-  $node.click( function() {
-    $('html, body').animate({ scrollTop: (positions[ index ] - documentHeight + 10)}, 1000 );
+    $('.fa-reorder').fadeOut(100);
   });
-})
+
+//Nav out
+$('nav li a').on('click', function(){
+    var timer = 0;
+    $('nav li').each(function(){
+    timer = timer + 74;
+    var $this = $(this);
+    setTimeout(function(){
+      $this.animate({ left : -leftPos }, 200, function(){
+        $('.fa-reorder').fadeIn(500);
+      });
+    }, timer); 
+  });
+  
+}); 
+
+//Set the nav font size based on vertical window height
+function browserHeight(){
+  var navHeight = $('nav li').height();
+  $('nav li a').css({
+    'font-size' : navHeight / 2.3
+  });
+};
+browserHeight();
+
+$(window).on('resize', browserHeight);

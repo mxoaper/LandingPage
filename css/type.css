@@ -1,4 +1,4 @@
-body.cheatActive {
+  body.cheatActive {
   -webkit-animation: spin 2s;
   -moz-animation: spin 2s;
   animation: spin 2s;
@@ -36,3 +36,4 @@ body.cheatActive {
     transform: rotateX(360deg);
   }
 }
+*/
